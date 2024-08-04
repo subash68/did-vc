@@ -1,0 +1,22 @@
+import { verifyCredential, verifyPresentation } from "did-jwt-vc";
+
+import { Resolver } from "did-resolver";
+import { getResolver } from "web-did-resolver";
+
+// // This is sample data //
+const vcJwt =
+  "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImNpdGl6ZW4iOnsidHlwZSI6IlBhc3Nwb3J0IiwibmFtZSI6IlVuaXRlZCBTdGF0ZXMgb2YgQW1lcmljYSJ9fX0sInN1YiI6ImRpZDp3ZWI6c3ViYXNoNjguZ2l0aHViLmlvIiwibmJmIjoxNzIyNzY0MjYyLCJpc3MiOiJkaWQ6d2ViOnN1YmFzaDY4LmdpdGh1Yi5pbyJ9.1_Kj-1R50JQjMtzK9vVVQmm-Nlb7MOz4OEVSy0syGHdU38a85SYHpGot_MH6s3P5_5HMXno9dysrQQcSelVnaA";
+
+// // this sample data //
+const vpJwt =
+  "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2cCI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVQcmVzZW50YXRpb24iXSwidmVyaWZpYWJsZUNyZWRlbnRpYWwiOlsiZXlKaGJHY2lPaUpGVXpJMU5rc2lMQ0owZVhBaU9pSktWMVFpZlEuZXlKMll5STZleUpBWTI5dWRHVjRkQ0k2V3lKb2RIUndjem92TDNkM2R5NTNNeTV2Y21jdk1qQXhPQzlqY21Wa1pXNTBhV0ZzY3k5Mk1TSmRMQ0owZVhCbElqcGJJbFpsY21sbWFXRmliR1ZEY21Wa1pXNTBhV0ZzSWwwc0ltTnlaV1JsYm5ScFlXeFRkV0pxWldOMElqcDdJbU5wZEdsNlpXNGlPbnNpZEhsd1pTSTZJbEJoYzNOd2IzSjBJaXdpYm1GdFpTSTZJbFZ1YVhSbFpDQlRkR0YwWlhNZ2IyWWdRVzFsY21sallTSjlmWDBzSW5OMVlpSTZJbVJwWkRwM1pXSTZjM1ZpWVhOb05qZ3VaMmwwYUhWaUxtbHZJaXdpYm1KbUlqb3hOVFl5T1RVd01qZ3lMQ0pwYzNNaU9pSmthV1E2ZDJWaU9uTjFZbUZ6YURZNExtZHBkR2gxWWk1cGJ5SjkuZ0hpMW1la252Y1Y2Q21UaVFGdmlHb2ljYUZlaHZDTGFEd1pKbnJYZG1pNUlMRVlXSlpJVWhaZ00wRldnODROZ1JINEpMbG95VDJKOFFsQS00UUM5NVEiXX0sImlzcyI6ImRpZDp3ZWI6c3ViYXNoNjguZ2l0aHViLmlvIn0.csrztoLAk9c4WRWVxEKvRPl_CVA1ASNZICGC-Cr0oe4BvqetwtBEbHtZE_FgfXMov9Jf5nRhhRqtXs1hzqTw9g";
+
+// Prepare the did:web resolver
+const resolver = new Resolver(getResolver());
+
+// Verify the Credentantial and the Presentation
+const verifiedVC = await verifyCredential(vcJwt, resolver);
+console.log("//// Verified Credentials:\n", verifiedVC);
+
+const verifiedVP = await verifyPresentation(vpJwt, resolver);
+// console.log("\n//// Verified Presentation:\n", verifiedVP);
