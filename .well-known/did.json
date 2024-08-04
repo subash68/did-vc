@@ -1,0 +1,26 @@
+{
+    "@context": [
+      "https://www.w3.org/ns/did/v1",
+      "https://w3id.org/security/suites/jws-2020/v1"
+    ],
+    "id": "did:web:subash68.github.io",
+    "verificationMethod": [
+      {
+        "id": "did:web:subash68.github.io#owner",
+        "type": "JsonWebKey2020",
+        "controller": "did:web:subash68.github.io",
+        "publicKeyJwk": {
+          "kty": "EC",
+          "crv": "secp256k1",
+          "x": "9a3e97ce64a361a72863adb768a95a639832e8dc8776621fe393c432c593df41",
+          "y": "7c82c903ed12232c8a36a70a22caa3cb9aad8e4f460c2c775ce837ab9df8b2b2"
+        }
+      }
+    ],
+    "authentication": [
+      "did:web:subash68.github.io#owner"
+    ],
+    "assertionMethod": [
+      "did:web:subash68.github.io#owner"
+    ]
+  }
